@@ -77,15 +77,10 @@ variable "tags" {
 ##########################
 # Build artifact settings
 ##########################
-variable "local_existing_package" {
-  description = "The absolute path to an existing zip-file to use"
-  type        = string
-}
-
 variable "source_path" {
   description = "The absolute path to a local file or directory containing your Lambda source code"
   type        = any # string | list(string | map(any))
-  default     = {}
+  default     = null
 }
 
 ##########################
