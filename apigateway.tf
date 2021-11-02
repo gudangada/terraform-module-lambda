@@ -58,6 +58,11 @@ resource "aws_api_gateway_deployment" "stage" {
   count       = local.use_api_gateway
   rest_api_id = aws_api_gateway_rest_api.api-gateway[0].id
   stage_name  = var.environment
+
+  depends_on = [
+    aws_api_gateway_method.proxy-method,
+    aws_api_gateway_integration.lambda-integration
+  ]
 }
 
 resource "aws_api_gateway_base_path_mapping" "mapping" {
