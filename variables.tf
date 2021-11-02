@@ -101,3 +101,30 @@ variable "service_name" {
   type        = string
   default     = ""
 }
+
+##########################
+# APIGateway settings
+##########################
+variable "use_api_gateway" {
+  description = "To provision api gateway for proxy http request to lambda"
+  type    = bool
+  default = false
+}
+
+variable "domain_name" {
+  description = "The domain name that you want use based on domain cert and cloudflare zone id"
+  type = string
+  default = null
+}
+
+variable "domain_cert" {
+  description = "Domain certificate to validate your domain name"
+  type = string
+  default = null
+}
+
+variable "cloudflare_zone_id" {
+  description = "Cloudflare zone id"
+  type = string
+  default = null
+}

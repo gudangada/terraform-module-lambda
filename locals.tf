@@ -12,4 +12,7 @@ locals {
     ManagedBy     = "terraform"
   }
   tags = var.tags == {} ? local.default_tags : merge(local.default_tags, var.tags)
+
+  # apigateway variable
+  use_api_gateway = var.use_api_gateway ? 1 : 0
 }
