@@ -1,7 +1,6 @@
 locals {
-  service_name        = var.service_name == "" ? var.product_domain : format("%s-%s", var.product_domain, var.service_name)
-  function_name       = format("%s-lambda-%s-%s", local.service_name, var.function_name, var.environment)
-  default_description = format("%s %s lambda function", local.service_name, var.environment)
+  function_name       = replace(format("%s-%s-lambda-%s-%s", var.product_domain, var.service_name, var.function_name, var.environment), "--", "-")
+  default_description = format("%s %s %s lambda function", var.product_domain, var.service_name, var.environment)
   description         = var.description == "" ? local.default_description : format("%s to %s", local.default_description, var.description)
   default_tags = {
     Name          = local.function_name
@@ -12,4 +11,7 @@ locals {
     ManagedBy     = "terraform"
   }
   tags = var.tags == {} ? local.default_tags : merge(local.default_tags, var.tags)
+
+  # apigateway variable
+  use_api_gateway = var.use_api_gateway ? 1 : 0
 }
