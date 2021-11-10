@@ -76,6 +76,21 @@ variable "tags" {
 }
 
 ##########################
+# CloudWatch Logs settings
+##########################
+variable "cwl_tags" {
+  description = "A map of tags to assign to the CloudWatch Logs resource."
+  type        = map(string)
+  default     = {}
+}
+
+variable "cwl_retention_in_days" {
+  description = "Specifies the number of days you want to retain log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653."
+  type        = number
+  default     = null
+}
+
+##########################
 # Build artifact settings
 ##########################
 variable "source_path" {
@@ -108,24 +123,24 @@ variable "service_name" {
 ##########################
 variable "use_api_gateway" {
   description = "To provision api gateway for proxy http request to lambda"
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "domain_name" {
   description = "The domain name that you want use based on domain cert and cloudflare zone id"
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 variable "domain_cert" {
   description = "Domain certificate to validate your domain name"
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 variable "cloudflare_zone_id" {
   description = "Cloudflare zone id"
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
