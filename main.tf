@@ -18,7 +18,7 @@ module "lambda_function" {
   lambda_role                       = var.lambda_role_arn
   tags                              = local.tags
   cloudwatch_logs_retention_in_days = var.cwl_retention_in_days
-  cloudwatch_logs_tags              = var.cwl_tags
+  cloudwatch_logs_tags              = local.cwl_tags
 
   source_path = var.source_path
 }
