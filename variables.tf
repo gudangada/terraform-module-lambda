@@ -79,7 +79,7 @@ variable "tags" {
 # CloudWatch Logs settings
 ##########################
 variable "cwl_tags" {
-  description = "A map of tags to assign to the CloudWatch Logs resource."
+  description = "A map of additional tags to assign to the CloudWatch Logs resource."
   type        = map(string)
   default     = {}
 }

@@ -52,6 +52,13 @@ resource "aws_api_gateway_domain_name" "domain" {
   count           = local.use_api_gateway
   certificate_arn = var.domain_cert
   domain_name     = var.domain_name
+
+  tags = {
+    Service       = var.service_name
+    ProductDomain = var.product_domain
+    Environment   = var.environment
+    ManagedBy     = "terraform"
+  }
 }
 
 resource "aws_api_gateway_deployment" "stage" {
