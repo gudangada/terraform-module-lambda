@@ -14,4 +14,13 @@ locals {
 
   # apigateway variable
   use_api_gateway = var.use_api_gateway ? 1 : 0
+
+  # lambda cloudwatch variable
+  default_cwl_tags = {
+    Service       = var.service_name
+    ProductDomain = var.product_domain
+    Environment   = var.environment
+    ManagedBy     = "terraform"
+  }
+  cwl_tags = var.cwl_tags == {} ? local.default_cwl_tags : merge(local.default_cwl_tags, var.cwl_tags)
 }
