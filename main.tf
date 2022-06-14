@@ -19,6 +19,7 @@ module "lambda_function" {
   tags                              = local.tags
   cloudwatch_logs_retention_in_days = var.cwl_retention_in_days
   cloudwatch_logs_tags              = local.cwl_tags
+  create_package                    = false # disable package creation on init. to bypass python preparation step on RunAtlantis
 
   source_path = var.source_path
 }
