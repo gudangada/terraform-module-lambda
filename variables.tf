@@ -145,7 +145,7 @@ variable "cloudflare_zone_id" {
   default     = null
 }
 
-variale "security_policy" {
+variable "security_policy" {
   description = "Security policy for API Gateway "
   type        = string
   default     = "TLS_1_2" # Making TLS 1.2 default for compliance
