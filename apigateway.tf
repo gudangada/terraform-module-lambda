@@ -52,6 +52,7 @@ resource "aws_api_gateway_domain_name" "domain" {
   count           = local.use_api_gateway
   certificate_arn = var.domain_cert
   domain_name     = var.domain_name
+  security_policy = var.security_policy
 
   tags = {
     Service       = var.service_name
@@ -62,9 +63,9 @@ resource "aws_api_gateway_domain_name" "domain" {
 }
 
 resource "aws_api_gateway_deployment" "stage" {
-  count       = local.use_api_gateway
-  rest_api_id = aws_api_gateway_rest_api.api-gateway[0].id
-  stage_name  = var.environment
+  count           = local.use_api_gateway
+  rest_api_id     = aws_api_gateway_rest_api.api-gateway[0].id
+  stage_name      = var.environment
 
   depends_on = [
     aws_api_gateway_method.proxy-method,
