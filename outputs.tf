@@ -123,3 +123,19 @@ output "s3_object" {
   description = "The map with S3 object data of zip archive deployed (if deployment was from S3)"
   value       = module.lambda_function.s3_object
 }
+
+# API Gateway
+output "agw_id" {
+  description = "API Gateway ID"
+  value       = aws_api_gateway_rest_api.api-gateway.id
+}
+
+output "agw_root_resource_id" {
+  description = "API Gateway root resource ID"
+  value       = aws_api_gateway_rest_api.api-gateway.root_resource_id
+}
+
+output "agw_arn" {
+  description = "API Gateway ARN"
+  value       = aws_api_gateway_rest_api.api-gateway.arn
+}
