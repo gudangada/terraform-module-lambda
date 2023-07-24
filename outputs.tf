@@ -135,7 +135,7 @@ output "agw_root_resource_id" {
   value       = aws_api_gateway_rest_api.api-gateway.root_resource_id
 }
 
-output "agw_arn" {
-  description = "API Gateway ARN"
-  value       = aws_api_gateway_rest_api.api-gateway.arn
+output "agw_role_arn" {
+  description = "API Gateway role ARN"
+  value       = aws_iam_role.api-gateway-role.arn
 }
